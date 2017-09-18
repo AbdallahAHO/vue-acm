@@ -4,13 +4,13 @@
     <aside class="flex flex-row flex-wrap vh-100 db fl w-50 w-50-m w-25-l bg-black-40" style="overflow: auto">
       <div class="flex flex-column w-100 self-start bb b--white-20 white pa4">
         <h1 class="lh-title ph2 pt2 mv0 mh0 fw9">
-          Good Morning!
+          Good Evening, ACM!
         </h1>
       </div>
 
       <div class="flex flex-column w-100 b--white-20 white pa4">
         <router-link :to="{ name: 'Todo' }" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">Todo List</router-link>
-        <router-link v-for="newsSource in newsSources" :to="{ name: 'News', params: { source: newsSource.source }}" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">News - {{newsSource.label}}</router-link>
+        <router-link v-for="newsSource in newsSources" :key="newsSource.label" :to="{ name: 'News', params: { source: newsSource.source }}" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">News - {{newsSource.label}}</router-link>
       </div>
 
       <div class="bt b--white-20 w-100 center flex flex flex-column self-end white pv2 ph5">
@@ -39,12 +39,12 @@ export default {
           label: 'BBC'
         },
         {
-          source: 'daily-mail',
-          label: 'Daily Mail'
+          source: 'mashable',
+          label: 'Mashable'
         },
         {
-          source: 'the-new-york-times',
-          label: 'The New York Times'
+          source: 'new-scientist',
+          label: 'New Scientist'
         }
       ]
     }

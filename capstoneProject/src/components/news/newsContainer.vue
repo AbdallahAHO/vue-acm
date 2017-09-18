@@ -1,7 +1,9 @@
 <template>
-  <section class="ma4 tc dib-ns flex-wrap self-start">
-    <div v-if="loading">loading ..... </div>
-    <news-item v-else v-for="newsItem in newsItems" :newsItem="newsItem" :source="source" :key="newsItem"/>
+  <section class="mh4 tc dib-ns flex-wrap self-start">
+    <div class="dtc  v-mid tc white ph3 ph4-l"  v-if="loading">
+      <h1 class="f6 f2-m center f-subheadline-l fw6 tc">Loading...</h1>
+    </div>
+    <news-item v-else v-for="newsItem in newsItems" :newsItem="newsItem" :source="source" :key="newsItem.title"/>
   </section>
 </template>
 
