@@ -1,7 +1,7 @@
 <template>
   <div class="vh-100 dt center w-70">
     <div class="dtc v-mid white ph3 ph4-l container">
-      <panel-header></panel-header>
+      <panel-header :tasks="tasks"></panel-header>
       <panel-list @selectAllTasks="selectAll" @addNewTask="addTask" @clearList="clearList" :tasks="tasks"></panel-list>
 
       <section class="list">

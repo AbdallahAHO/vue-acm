@@ -1,14 +1,15 @@
 <template>
   <section class="panel-title">
     <h3>THINGS TO DO</h3>
-    <h4><strong class="f5">3</strong> DONE | <strong class="f5">3</strong> LEFT</h4>
+    <h4 v-if="tasks.length > 0"><strong class="f5">{{tasks.length}}</strong> Total Tasks</h4>
   </section>
 </template>
 
 <script>
 
 export default {
-  name: 'TodoListHeader'
+  name: 'TodoListHeader',
+  props: ['tasks']
 }
 </script>
 

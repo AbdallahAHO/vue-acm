@@ -45,6 +45,18 @@ export default {
         {
           source: 'new-scientist',
           label: 'New Scientist'
+        },
+        {
+          source: 'recode',
+          label: 'Recode'
+        },
+        {
+          source: 'techcrunch',
+          label: 'TechCrunch'
+        },
+        {
+          source: 'ars-technica',
+          label: 'Ars Technica'
         }
       ]
     }
