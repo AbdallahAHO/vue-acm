@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+
+import Todo from '@/pages/Todo'
+import News from '@/pages/News'
 
 Vue.use(Router)
 
@@ -8,8 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Todo',
+      component: Todo
+    },
+    {
+      path: '/news/:source',
+      name: 'News',
+      component: News
     }
   ]
 })
