@@ -1,15 +1,7 @@
 <template>
   <section class="ma4 tc dib-ns flex-wrap self-start">
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
-    <news-item/>
+    <div v-if="loading">loading ..... </div>
+    <news-item v-else v-for="newsItem in newsItems" :newsItem="newsItem" :source="source" :key="newsItem"/>
   </section>
 </template>
 
@@ -18,6 +10,33 @@ import newsItem from './newsItem'
 
 export default {
   name: 'NewsPage',
-  components: { newsItem }
+  data: function () {
+    return {
+      newsItems: [],
+      loading: true
+    }
+  },
+  components: { newsItem },
+  created: function () {
+    this.loading = true
+    this.$http.get(`https://newsapi.org/v1/articles?source=${this.source}&sortBy=top&apiKey=b504e7288dc4421c903cb3ffd148df9f`)
+          .then((response) => {
+            this.loading = false
+            this.newsItems = response.data.articles
+          })
+  },
+  computed: {
+    source: {
+      get: function () {
+        this.loading = true
+        this.$http.get(`https://newsapi.org/v1/articles?source=${this.$route.params.source}&sortBy=top&apiKey=b504e7288dc4421c903cb3ffd148df9f`)
+          .then((response) => {
+            this.loading = false
+            this.newsItems = response.data.articles
+          })
+        return this.$route.params.source
+      }
+    }
+  }
 }
 </script>

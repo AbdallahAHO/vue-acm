@@ -9,9 +9,8 @@
       </div>
 
       <div class="flex flex-column w-100 b--white-20 white pa4">
-        <router-link :to="{ name: 'Todo' }"" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">Todo List</router-link>
-        <router-link :to="{ name: 'News', params: { source: 'bbc' }}" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">News - BBC</router-link>
-        <router-link :to="{ name: 'News', params: { source: 'Engadget' }}" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">News - Engadget</router-link>
+        <router-link :to="{ name: 'Todo' }" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">Todo List</router-link>
+        <router-link v-for="newsSource in newsSources" :to="{ name: 'News', params: { source: newsSource.source }}" class="f4 link dim br-pill ph4 pv3 mb2 dib white bg-black-60 tc bold" href="#0">News - {{newsSource.label}}</router-link>
       </div>
 
       <div class="bt b--white-20 w-100 center flex flex flex-column self-end white pv2 ph5">
@@ -32,6 +31,24 @@
 import Todo from '@/pages/Todo'
 
 export default {
+  data: function () {
+    return {
+      newsSources: [
+        {
+          source: 'bbc-news',
+          label: 'BBC'
+        },
+        {
+          source: 'daily-mail',
+          label: 'Daily Mail'
+        },
+        {
+          source: 'the-new-york-times',
+          label: 'The New York Times'
+        }
+      ]
+    }
+  },
   name: 'app',
   components: { Todo }
 }
