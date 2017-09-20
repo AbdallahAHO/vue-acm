@@ -1,10 +1,44 @@
+
+
+
+
+
 <template>
   <section class="panel">
-    <i @click="selectAll" class="link dim dib grey f2 ml3" :class="{'ion-android-done-all dim moon-gray': !areAllSelected, 'ion-android-done-all dim blue': areAllSelected}"></i>
-    <input v-model="newTask" @keyup.enter="addTask" placeholder="What do you need to do?" class="ml3 text-input">
-    <a class="f6 link dim br-pill ph3 pv1 mr2 dib black bg-white" @click="clearList">Clear List</a>
+    <i
+        @click="selectAll"
+        class="link dim dib grey f2 ml3"
+        :class="{'ion-android-done-all dim moon-gray': !areAllSelected, 'ion-android-done-all dim blue': areAllSelected}"></i>
+
+
+    <input
+          v-model="newTask"
+          @keyup.enter="addTask"
+          placeholder="What do you need to do?"
+          class="ml3 text-input">
+
+
+
+    <a class="f6 link dim br-pill ph3 pv1 mr2 dib black bg-white"
+       @click="clearList">Clear List</a>
   </section>
 </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 export default {

@@ -3,6 +3,7 @@
     <i @click="check(task)"
       class="checkbox link dim dib white f3 ml4"
       :class="{'ion-ios-circle-outline': !task.checked, 'ion-ios-checkmark-outline': task.checked}"></i>
+
     <label for="checkbox">{{ task.text }}</label>
 
     <button class="f6 link dim br-pill ph3 pv2 mb2 dib white bg-mid-gray delete deleteButton" @click="removeTask(task)">
