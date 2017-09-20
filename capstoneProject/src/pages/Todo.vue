@@ -1,7 +1,7 @@
 <template>
   <div class="vh-100 dt center w-70">
     <div class="dtc v-mid white ph3 ph4-l container">
-      <panel-header :tasks="tasks"></panel-header>
+      <panel-header></panel-header>
       <panel-list @selectAllTasks="selectAll" @addNewTask="addTask" @clearList="clearList" :tasks="tasks"></panel-list>
 
       <section class="list">
@@ -23,8 +23,7 @@ export default {
   components: { panelList, panelHeader, todoItem },
   data () {
     return {
-      newTask: '',
-      tasks: [ {text: 'This is an example task. Delete or add your own', checked: false} ]
+      newTask: ''
     }
   },
   computed: {
@@ -32,28 +31,26 @@ export default {
       return this.tasks.every(function (task) {
         return task.checked
       }) && this.tasks.length > 0
+    },
+    tasks: function () {
+      return this.$store.state.tasks
     }
   },
   methods: {
-    addTask: function (task) {
-      var modifiedTask = task.trim()
-      if (task) {
-        this.tasks.push({text: modifiedTask, checked: false})
-        this.newTask = ''
-      }
+    addTask: function (taskString) {
+      this.$store.dispatch('addTodoAction', taskString)
     },
 
     removeTask: function (task) {
-      var index = this.tasks.indexOf(task)
-      this.tasks.splice(index, 1)
+      this.$store.dispatch('deleteTodoAction', task)
     },
 
     check: function (task) {
-      task.checked = true
+      this.$store.dispatch('changeTodoStateAction', task, true)
     },
 
     clearList: function () {
-      this.tasks = []
+      this.$store.dispatch('clearTodoListAction')
     },
 
     selectAll: function () {

@@ -1,7 +1,8 @@
 <template>
   <section class="panel-title">
     <h3>THINGS TO DO</h3>
-    <h4 v-if="tasks.length > 0"><strong class="f5">{{tasks.length}}</strong> Total Tasks</h4>
+    <h4 v-if="totalTasks > 0"><strong class="f5">{{totalTasks}}</strong> Total Tasks
+    | <strong class="f5">{{DoneTasks}}</strong> Done Tasks</h4>
   </section>
 </template>
 
@@ -9,7 +10,15 @@
 
 export default {
   name: 'TodoListHeader',
-  props: ['tasks']
+  computed: {
+    totalTasks () {
+      return this.$store.state.tasks.length
+    },
+    DoneTasks () {
+      return this.$store.getters.doneTodos.length
+    }
+
+  }
 }
 </script>
 
