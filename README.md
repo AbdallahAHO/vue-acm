@@ -1,6 +1,5 @@
-# capstone-project
-
-> A Vue.js project
+# Vue 2 - Capstone Project
+### Vue 2 - Capstone Project for Vue.js 2 course - Collaboration between BADR & ACM Chapter - Alexandria University Edit
 
 ## Build Setup
 
